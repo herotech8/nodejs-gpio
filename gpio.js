@@ -52,13 +52,14 @@ class gpio {
         fs.writeFileSync(PATH + '/export', currentPin);
       }
 
+setTimeout(() => {
       if(direction == this.DIR_IN) {
         fs.writeFileSync(PATH + '/gpio' + currentPin + '/direction', this.DIR_IN);
       } else {
         fs.writeFileSync(PATH + '/gpio' + currentPin + '/direction', this.DIR_OUT);
       }
-
-      resolve();
+}, 1000);
+      setTimeout(() => { resolve(); }, 2000);
     });
   }
 
@@ -70,13 +71,24 @@ class gpio {
         throw new Error('Invalid value specified');
       }
 
+        console.log(PATH + '/gpio' + currentPin + '/value');
+
       if(value == this.VAL_HIGH) {
-        fs.writeFileSync(PATH + '/gpio' + currentPin + '/value', 1);
+        fs.writeFile(PATH + '/gpio' + currentPin + '/value', 1, (err) => {
+if(err) { console.log('Write Error', err); }
+resolve();
+
+
+});
       } else {
-        fs.writeFileSync(PATH + '/gpio' + currentPin + '/value', 0);
+        fs.writeFile(PATH + '/gpio' + currentPin + '/value', 0, (err) => {
+if(err) { console.log('Write Error', err); }
+
+resolve();
+
+});
       }
 
-      resolve();
     });
   }
 
