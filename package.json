@@ -1,0 +1,20 @@
+{
+  "name": "gpio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gpio.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Herotech8/nodejs-gpio.git"
+  },
+  "author": "Craig Woodland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Herotech8/nodejs-gpio/issues"
+  },
+  "homepage": "https://github.com/Herotech8/nodejs-gpio#readme",
+  "dependencies": { }
+}
