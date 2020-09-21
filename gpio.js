@@ -52,13 +52,14 @@ class gpio {
         fs.writeFileSync(PATH + '/export', currentPin);
       }
 
-setTimeout(() => {
-      if(direction == this.DIR_IN) {
-        fs.writeFileSync(PATH + '/gpio' + currentPin + '/direction', this.DIR_IN);
-      } else {
-        fs.writeFileSync(PATH + '/gpio' + currentPin + '/direction', this.DIR_OUT);
-      }
-}, 1000);
+      setTimeout(() => {
+        if(direction == this.DIR_IN) {
+          fs.writeFileSync(PATH + '/gpio' + currentPin + '/direction', this.DIR_IN);
+        } else {
+          fs.writeFileSync(PATH + '/gpio' + currentPin + '/direction', this.DIR_OUT);
+        }
+      }, 1000);
+
       setTimeout(() => { resolve(); }, 2000);
     });
   }
@@ -71,24 +72,19 @@ setTimeout(() => {
         throw new Error('Invalid value specified');
       }
 
-        console.log(PATH + '/gpio' + currentPin + '/value');
-
       if(value == this.VAL_HIGH) {
         fs.writeFile(PATH + '/gpio' + currentPin + '/value', 1, (err) => {
-if(err) { console.log('Write Error', err); }
-resolve();
+          if(err) { console.log('Write Error', err); }
 
-
-});
+          resolve();
+        });
       } else {
         fs.writeFile(PATH + '/gpio' + currentPin + '/value', 0, (err) => {
-if(err) { console.log('Write Error', err); }
+          if(err) { console.log('Write Error', err); }
 
-resolve();
-
-});
+          resolve();
+        });
       }
-
     });
   }
 
