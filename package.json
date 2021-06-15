@@ -1,5 +1,5 @@
 {
-  "name": "@herotech8/gpio",
+  "name": "gpio",
   "version": "1.0.0",
   "description": "",
   "main": "gpio.js",
