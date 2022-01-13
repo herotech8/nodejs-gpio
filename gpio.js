@@ -49,7 +49,7 @@ class gpio {
       var currentPin = this.getPinForCurrentMode(pin);
 
       if(!isExported(currentPin)) {
-        fs.writeFileSync(PATH + '/export', currentPin);
+        fs.writeFileSync(PATH + '/export', '' + currentPin);
       }
 
       setTimeout(() => {
@@ -73,13 +73,13 @@ class gpio {
       }
 
       if(value == this.VAL_HIGH) {
-        fs.writeFile(PATH + '/gpio' + currentPin + '/value', 1, (err) => {
+        fs.writeFile(PATH + '/gpio' + currentPin + '/value', '' + 1, (err) => {
           if(err) { console.log('Write Error', err); }
 
           resolve();
         });
       } else {
-        fs.writeFile(PATH + '/gpio' + currentPin + '/value', 0, (err) => {
+        fs.writeFile(PATH + '/gpio' + currentPin + '/value', '' + 0, (err) => {
           if(err) { console.log('Write Error', err); }
 
           resolve();
